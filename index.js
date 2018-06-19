@@ -8,17 +8,6 @@ let win,
     queryStr = '',
     db = [];
 
-function query(queryStr, db) {
-    if (!queryStr) {
-        return db;
-    }
-    return db.filter(function(entry) {
-        return entry.Name.includes(queryStr) ||
-            entry.Phone.includes(queryStr) ||
-            entry.Item.includes(queryStr) ||
-            entry.Email.includes(queryStr);
-    });
-}
 
 function createWindow() {
     // Create the browser window.
@@ -70,14 +59,23 @@ try {
 }
 
 ipcMain.on('open', function() {
-    win.webContents.send('update', query(queryStr, db));
+    win.webContents.send('update', db);
 });
 
 ipcMain.on('update', function(event, str) {
-    win.webContents.send('update', query(queryStr, db));
+    console.log(newDB);
+    db = newDB;
+    var string = csvjson.toCSV(db);
+    fs.writeFileSync('./preorder.csv', string);
+    console.log(string);
+    win.webContents.send('update', db);
 });
 
 ipcMain.on('query', function(event, str) {
     queryStr = str;
-    win.webContents.send('update', query(queryStr, db));
+    win.webContents.send('update', db);
+});
+
+ipcMain.on('save', function(event, id, entry) {
+    win.webContents.send('update', db);
 });

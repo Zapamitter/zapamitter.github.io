@@ -1,7 +1,9 @@
 <html>
 
 <head>
-    <script>window.$ = window.jQuery = require('./jquery.js');</script>
+    <script>
+        window.$ = window.jQuery = require('./jquery.js');
+    </script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -10,6 +12,7 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./main.css">
 </head>
 
 <body>
@@ -107,21 +110,19 @@
         </div>
     </div>
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
-      </button>
-      
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-            </div>
-            <div class="modal-body">
+                </div>
+                <div class="modal-body">
                     <div class="row" style="padding-bottom: 2%;">
                         <div class="col-sm-1"> </div>
                         <div class="col-sm-10">
@@ -132,53 +133,56 @@
                     <div class="row">
                         <div class="col-sm-1"> </div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" placeholder="Full Name">
+                            <input type="text" class="form-control" id="edit-name" placeholder="Full Name">
                         </div>
                         <div class="col-sm-1"></div>
                     </div>
                     <div class="row" style="padding-top:5%; padding-bottom:1%;">
                         <div class="col-sm-1"> </div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="item" placeholder="Item">
+                            <input type="text" class="form-control" id="edit-item" placeholder="Item">
                         </div>
                         <div class="col-sm-1"></div>
                     </div>
                     <div class="row" style="padding-top:5%; padding-bottom:1%;">
                         <div class="col-sm-1"> </div>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="email" placeholder="Email">
+                            <input type="email" class="form-control" id="edit-email" placeholder="Email">
                         </div>
                         <div class="col-sm-1"></div>
                     </div>
                     <div class="row" style="padding-top:5%; padding-bottom:1%;">
                         <div class="col-sm-1"> </div>
                         <div class="col-sm-10">
-                            <input type="phone" class="form-control" id="phone" placeholder="Phone Number">
+                            <input type="phone" class="form-control" id="edit-phone" placeholder="Phone Number">
                         </div>
                         <div class="col-sm-1"></div>
                     </div>
                     <div class="row" style="padding-top:5%; padding-bottom:1%;">
                         <div class="col-sm-1"> </div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="paid" placeholder="Paid? Yes/No">
+                            <select type="text" class="form-control" id="edit-paid" placeholder="Paid? Yes/No">
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
                         </div>
                         <div class="col-sm-1"></div>
                     </div>
                     <div class="row" style="padding-top:5%; padding-bottom:1%;">
                         <div class="col-sm-1"> </div>
                         <div class="col-sm-10">
-                            <input type="notified" class="form-control" id="notified" placeholder="Notified? Yes/No">
+                            <input type="notified" class="form-control" id="edit-notified" placeholder="Notified? Yes/No">
                         </div>
                         <div class="col-sm-1"></div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="applyEdit()" class="btn btn-primary" id="edit-id" data-id="">Save changes</button>
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
     <script src='./gui.js'></script>
 </body>
 
