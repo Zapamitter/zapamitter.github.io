@@ -20,7 +20,7 @@ function render() {
         var valid = query(queryStr, row);
         console.log(valid, row);
         if (valid) {
-            output += `<tr id="row-id-${id}"><td>${row.Name}</td><td>${row.Item}</td><td>${row.Email}</td><td>${row.Phone}</td><td>${row.Notified}</td><td>${row.Paid}</td><td onclick="setUpEditRow('${id}')">Edit</td><td onclick="deleteRow(${id})">Delete</td></tr>`
+            output += `<tr id="row-id-${id}"><td>${row.Name}</td><td>${row.Item}</td><td>${row.Email}</td><td>${row.Phone}</td><td>${row.Notified}</td><td>${row.Paid}</td><td onclick="setUpEditRow('${id}')" class="pointer">Edit</td><td onclick="deleteRow(${id})" class="pointer">Delete</td></tr>`
         }
     });
     var body = document.getElementById('csvdocs');
@@ -32,13 +32,17 @@ ipcRenderer.on('update', function(event, updatedDB) {
     render();
 });
 
+ipcRenderer.on('saved', function() {
+    alert('Saved!');
+});
+
 function saveDB() {
-    ipcRenderer.send('save', db);
+    ipcRenderer.send('update', db);
 }
 
 function deleteRow(id) {
     db.splice(id, 1);
-    ipcRenderer.send('update', db);
+    saveDB();
 }
 
 function addRow() {
@@ -47,10 +51,11 @@ function addRow() {
         Item: $('#item').val(),
         Email: $('#email').val(),
         Phone: $('#phone').val(),
+        Paid: $('#paid').val(),
         Notified: $('#notified').val(),
     }
 
-
+    console.log('addRow');
     if (!entry.Name) {
         alert('Name Required!');
         return;
@@ -67,13 +72,25 @@ function addRow() {
         alert('Phone Required!');
         return;
     }
+    if (!entry.Paid) {
+        alert('Paid Required!');
+        return;
+    }
     if (!entry.Notified) {
         alert('Notified Required!');
         return;
     }
-
+    console.log('new entry', entry)
     db.push(entry);
+    console.log
     saveDB();
+    $('#name').val('');
+    $('#item').val('');
+    $('#email').val('');
+    $('#phone').val('');
+    $('#paid').val('No');
+    $('#notified').val('No');
+
 }
 
 function setQuery() {
@@ -82,9 +99,6 @@ function setQuery() {
     render();
 }
 
-function showEdit(id) {
-    $('#editModal').modal('show');
-};
 
 function setUpEditRow(id) {
     var entry = db[id];
@@ -92,9 +106,10 @@ function setUpEditRow(id) {
     $('#edit-item').val(entry.Item);
     $('#edit-email').val(entry.Email);
     $('#edit-phone').val(entry.Phone);
+    $('#edit-paid').val(entry.Paid);
     $('#edit-notified').val(entry.Notified);
     $('#edit-id').attr('data-id', id);
-    showEdit(id);
+    $('#editModal').modal('show');
 }
 
 
@@ -104,6 +119,7 @@ function applyEdit() {
             Item: $('#edit-item').val(),
             Email: $('#edit-email').val(),
             Phone: $('#edit-phone').val(),
+            Paid: $('#edit-paid').val(),
             Notified: $('#edit-notified').val(),
         },
         id = $('#edit-id').attr('data-id');
@@ -125,14 +141,19 @@ function applyEdit() {
         alert('Phone Required!');
         return;
     }
+    if (!entry.Paid) {
+        alert('Paid Required!');
+        return;
+    }
     if (!entry.Notified) {
         alert('Notified Required!');
         return;
     }
     db[id] = entry;
     console.log(db);
-    $('#editModal').modal('close');
     saveDB();
+    $('#editModal').modal('hide');
+
 }
 
 ipcRenderer.send('open');

@@ -1,3 +1,4 @@
-button {
+button,
+.pointer {
     cursor: pointer;
 }
