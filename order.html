@@ -1,0 +1,203 @@
+<html>
+<head>
+    <script>
+        window.$ = window.jQuery = require('./jquery.js');
+    </script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+        <div class="row">
+            <div class="col-sm-3" style="padding-bottom:1%;">
+                <div class="row" style="padding-bottom: 2%;">
+                    <div class="col-sm-1"> </div>
+                    <div class="col-sm-10">
+                        <h3>Add New Preorder</h3>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1"> </div>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="name" placeholder="Full Name">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="padding-top:5%; padding-bottom:1%;">
+                    <div class="col-sm-1"> </div>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="item" placeholder="Item">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="padding-top:5%; padding-bottom:1%;">
+                    <div class="col-sm-1"> </div>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="padding-top:5%; padding-bottom:1%;">
+                    <div class="col-sm-1"> </div>
+                    <div class="col-sm-10">
+                        <input type="phone" class="form-control" id="phone" placeholder="Phone Number">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="padding-top:5%; padding-bottom:1%;">
+                    <div class="col-sm-1"> </div>
+                    <div class="col-sm-10">
+                        <label for="paid">Paid?</label>
+                        <select type="text" class="form-control" id="paid" placeholder="Paid? Yes/No">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="padding-top:5%; padding-bottom:1%;">
+                    <div class="col-sm-1"> </div>
+                    <div class="col-sm-10">
+                        <label for="notified">Notified?</label>
+                        <select type="notified" class="form-control" id="notified" placeholder="Notified? Yes/No">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="padding-top:5%; padding-bottom:1%;">
+                    <div class="col-sm-1"> </div>
+                    <div class="col-sm-10">
+                        <button type="button" style="width:100%;" class="btn btn-primary" onclick="addRow();">Add</button>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="row" style="padding-top:5%; padding-bottom:1%;">
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control" id="search" placeholder="Enter search parameters...">
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                <div class="row" style="padding-bottom:1%;">
+                    <div class="col-sm-9"><button type="button" style="width:100%;" class="btn btn-primary" onclick="setQuery()">Search</button></div>
+                    <div class="col-sm-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Paid</th>
+                                    <th scope="col">Notified</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody id="csvdocs">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Button trigger modal -->
+    
+    
+        <!-- Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" style="padding-bottom: 2%;">
+                            <div class="col-sm-1"> </div>
+                            <div class="col-sm-10">
+                                <h3>Edit Preorder</h3>
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-1"> </div>
+                            <div class="col-sm-10">
+                                <label for="edit-name">Name</label>
+                                <input type="text" class="form-control" id="edit-name" placeholder="Full Name">
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="row" style="padding-top:5%; padding-bottom:1%;">
+                            <div class="col-sm-1"> </div>
+                            <div class="col-sm-10">
+                                <label for="edit-item">Item</label>
+                                <input type="text" class="form-control" id="edit-item" placeholder="Item">
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="row" style="padding-top:5%; padding-bottom:1%;">
+                            <div class="col-sm-1"> </div>
+                            <div class="col-sm-10">
+                                <label for="edit-email">Email</label>
+                                <input type="email" class="form-control" id="edit-email" placeholder="Email">
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="row" style="padding-top:5%; padding-bottom:1%;">
+                            <div class="col-sm-1"> </div>
+                            <div class="col-sm-10">
+                                <label for="edit-phone">Phone</label>
+                                <input type="phone" class="form-control" id="edit-phone" placeholder="Phone Number">
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="row" style="padding-top:5%; padding-bottom:1%;">
+                            <div class="col-sm-1"> </div>
+                            <div class="col-sm-10">
+                                <label for="edit-paid">Paid?</label>
+                                <select type="text" class="form-control" id="edit-paid" placeholder="Paid? Yes/No">
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="row" style="padding-top:5%; padding-bottom:1%;">
+                            <div class="col-sm-1"> </div>
+                            <div class="col-sm-10">
+                                <label for="edit-notified">Notified?</label>
+                                <select type="notified" class="form-control" id="edit-notified" placeholder="Notified? Yes/No">
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-1"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" onclick="applyEdit()" class="btn btn-primary" id="edit-id" data-id="">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src='./gui.js'></script>
+    </body>
+  </html>

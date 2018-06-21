@@ -14,193 +14,141 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./main.css">
 </head>
-
 <body>
-    <div class="row">
-        <div class="col-sm-3" style="padding-bottom:1%;">
-            <div class="row" style="padding-bottom: 2%;">
-                <div class="col-sm-1"> </div>
-                <div class="col-sm-10">
-                    <h3>Add New Preorder</h3>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row">
-                <div class="col-sm-1"> </div>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" placeholder="Full Name">
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row" style="padding-top:5%; padding-bottom:1%;">
-                <div class="col-sm-1"> </div>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="item" placeholder="Item">
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row" style="padding-top:5%; padding-bottom:1%;">
-                <div class="col-sm-1"> </div>
-                <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" placeholder="Email">
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row" style="padding-top:5%; padding-bottom:1%;">
-                <div class="col-sm-1"> </div>
-                <div class="col-sm-10">
-                    <input type="phone" class="form-control" id="phone" placeholder="Phone Number">
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row" style="padding-top:5%; padding-bottom:1%;">
-                <div class="col-sm-1"> </div>
-                <div class="col-sm-10">
-                    <label for="paid">Paid?</label>
-                    <select type="text" class="form-control" id="paid" placeholder="Paid? Yes/No">
-                        <option value="No">No</option>
-                        <option value="Yes">Yes</option>
-                    </select>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row" style="padding-top:5%; padding-bottom:1%;">
-                <div class="col-sm-1"> </div>
-                <div class="col-sm-10">
-                    <label for="notified">Notified?</label>
-                    <select type="notified" class="form-control" id="notified" placeholder="Notified? Yes/No">
-                        <option value="No">No</option>
-                        <option value="Yes">Yes</option>
-                    </select>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row" style="padding-top:5%; padding-bottom:1%;">
-                <div class="col-sm-1"> </div>
-                <div class="col-sm-10">
-                    <button type="button" style="width:100%;" class="btn btn-primary" onclick="addRow();">Add</button>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+        <a class="navbar-brand" href="#">Zap Preorders!</a>
         </div>
-        <div class="col-sm-9">
-            <div class="row" style="padding-top:5%; padding-bottom:1%;">
-                <div class="col-sm-9">
-                    <input type="email" class="form-control" id="search" placeholder="Enter search parameters...">
-                </div>
-                <div class="col-sm-3"></div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a onclick="loginModal()" href="#">Login</a></li>
+        </ul>
+    </div>
+</nav>
+<a href="https://placeholder.com"><img style="width: 100%;" src="http://via.placeholder.com/1000x150"></a>
+<hr>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elementum mollis mi quis tincidunt. Phasellus et mauris et augue pharetra mollis nec ac sapien. Curabitur in quam sit amet lacus interdum mollis eu eu sem. Praesent condimentum aliquam diam vitae accumsan. Vestibulum fringilla aliquet neque in ullamcorper. Suspendisse justo ligula, fringilla nec nulla non, semper commodo augue. Aenean pulvinar nulla at mollis hendrerit. Sed ac sagittis turpis. Curabitur maximus urna lorem, eu rutrum tellus consectetur at. Duis fermentum nec nisl convallis sagittis. Pellentesque auctor nisl pharetra est elementum, congue cursus erat volutpat. In euismod ante in diam interdum, ac lacinia neque bibendum.</div>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4">Aliquam ut blandit nunc. Duis pellentesque a ipsum non commodo. In id bibendum nisi, ut consequat orci. Morbi pellentesque hendrerit nulla a rhoncus. Etiam sit amet diam vitae lectus convallis scelerisque. Nulla facilisi. Integer interdum vel metus quis accumsan. Nulla malesuada sem urna, eget lobortis orci interdum nec.</div>
+    <div class="col-sm-1"></div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10"><a href="https://placeholder.com"><img style="width: 100%;" src="http://via.placeholder.com/1000x350"></a></div>
+    <div class="col-sm-1"></div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">Aliquam ut blandit nunc. Duis pellentesque a ipsum non commodo. In id bibendum nisi, ut consequat orci. Morbi pellentesque hendrerit nulla a rhoncus. 
+        Etiam sit amet diam vitae lectus convallis scelerisque. Nulla facilisi. Integer interdum vel metus quis accumsan. Nulla malesuada sem urna, eget lobortis orci interdum nec.
+        Aliquam ut blandit nunc. Duis pellentesque a ipsum non commodo. In id bibendum nisi, ut consequat orci. Morbi pellentesque hendrerit nulla a rhoncus. 
+        Etiam sit amet diam vitae lectus convallis scelerisque. Nulla facilisi. Integer interdum vel metus quis accumsan. Nulla malesuada sem urna, eget lobortis orci interdum nec.
+    </div>
+    <div class="col-sm-3"></div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10"><h3>Contact Us</h3></div>
+    <div class="col-sm-1"></div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5"><a href="https://placeholder.com"><img style="width: 100%;" src="http://via.placeholder.com/500x500"></a></div>
+    <div class="col-sm-5">
+        <div class="row">
+            <div class="col-sm-1"> </div>
+            <div class="col-sm-10">
+                <label for="company-name">Company Name</label>
+                <input type="text" class="form-control" id="company-name" placeholder="Cool Traders Inc.">
             </div>
-            <div class="row" style="padding-bottom:1%;">
-                <div class="col-sm-9"><button type="button" style="width:100%;" class="btn btn-primary" onclick="setQuery()">Search</button></div>
-                <div class="col-sm-3"></div>
-            </div>
-            <div class="row">
-                <div class="col-sm-9">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Item</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">Paid</th>
-                                <th scope="col">Notified</th>
-                                <th scope="col">Edit</th>
-                                <th scope="col">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody id="csvdocs">
-                        </tbody>
-                    </table>
+            <div class="col-sm-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-1"> </div>
+                <div class="col-sm-10">
+                    <label for="phone-number">Phone Number</label>
+                    <input type="text" class="form-control" id="phone-number" placeholder="704-123-4567">
                 </div>
-                <div class="col-sm-3"></div>
+            <div class="col-sm-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-1"> </div>
+                <div class="col-sm-10">
+                    <label for="email-address">Email Address</label>
+                    <input type="text" class="form-control" id="email-address" placeholder="john.dough@gmail.com">
+                </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-1"> </div>
+                <div class="col-sm-10">
+                    <label for="comments">Comments</label>
+                    <textarea class="form-control" id="comments" placeholder="I would love to purchase your service!"></textarea>
+                </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-1"> </div>
+            <div class="col-sm-10"><button style="width:100%;" type="button" onclick="" class="btn btn-primary" id="contact-id" data-id="">Contact Us</button></div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+    <div class="col-sm-1">
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-9"></div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row" style="padding-bottom: 2%;">
+                    <div class="col-sm-1"> </div>
+                    <div class="col-sm-10">
+                        <h3>Login</h3>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1"> </div>
+                    <div class="col-sm-10">
+                        <label for="edit-name">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Username">
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1"> </div>
+                        <div class="col-sm-10">
+                            <label for="edit-name">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="**********">
+                        </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" onclick="" class="btn btn-primary" id="login-id" data-id="">Login</button>
             </div>
         </div>
     </div>
-    <!-- Button trigger modal -->
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row" style="padding-bottom: 2%;">
-                        <div class="col-sm-1"> </div>
-                        <div class="col-sm-10">
-                            <h3>Edit Preorder</h3>
-                        </div>
-                        <div class="col-sm-1"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-1"> </div>
-                        <div class="col-sm-10">
-                            <label for="edit-name">Name</label>
-                            <input type="text" class="form-control" id="edit-name" placeholder="Full Name">
-                        </div>
-                        <div class="col-sm-1"></div>
-                    </div>
-                    <div class="row" style="padding-top:5%; padding-bottom:1%;">
-                        <div class="col-sm-1"> </div>
-                        <div class="col-sm-10">
-                            <label for="edit-item">Item</label>
-                            <input type="text" class="form-control" id="edit-item" placeholder="Item">
-                        </div>
-                        <div class="col-sm-1"></div>
-                    </div>
-                    <div class="row" style="padding-top:5%; padding-bottom:1%;">
-                        <div class="col-sm-1"> </div>
-                        <div class="col-sm-10">
-                            <label for="edit-email">Email</label>
-                            <input type="email" class="form-control" id="edit-email" placeholder="Email">
-                        </div>
-                        <div class="col-sm-1"></div>
-                    </div>
-                    <div class="row" style="padding-top:5%; padding-bottom:1%;">
-                        <div class="col-sm-1"> </div>
-                        <div class="col-sm-10">
-                            <label for="edit-phone">Phone</label>
-                            <input type="phone" class="form-control" id="edit-phone" placeholder="Phone Number">
-                        </div>
-                        <div class="col-sm-1"></div>
-                    </div>
-                    <div class="row" style="padding-top:5%; padding-bottom:1%;">
-                        <div class="col-sm-1"> </div>
-                        <div class="col-sm-10">
-                            <label for="edit-paid">Paid?</label>
-                            <select type="text" class="form-control" id="edit-paid" placeholder="Paid? Yes/No">
-                                <option value="No">No</option>
-                                <option value="Yes">Yes</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-1"></div>
-                    </div>
-                    <div class="row" style="padding-top:5%; padding-bottom:1%;">
-                        <div class="col-sm-1"> </div>
-                        <div class="col-sm-10">
-                            <label for="edit-notified">Notified?</label>
-                            <select type="notified" class="form-control" id="edit-notified" placeholder="Notified? Yes/No">
-                                <option value="No">No</option>
-                                <option value="Yes">Yes</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-1"></div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" onclick="applyEdit()" class="btn btn-primary" id="edit-id" data-id="">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src='./gui.js'></script>
+</div>
+    <script src='./index-gui.js'></script>
 </body>
-
 </html>
