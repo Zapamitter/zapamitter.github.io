@@ -20,7 +20,7 @@ function render() {
         var valid = query(queryStr, row);
         console.log(valid, row);
         if (valid) {
-            output += `<tr id="row-id-${id}"><td>${row.Name}</td><td>${row.Item}</td><td>${row.Email}</td><td>${row.Phone}</td><td>${row.Notified}</td><td>${row.Paid}</td><td onclick="setUpEditRow('${id}')" class="pointer">Edit</td><td onclick="deleteRow(${id})" class="pointer">Delete</td></tr>`
+            output += `<tr id="row-id-${id}"><td>${row.Name}</td><td>${row.Item}</td><td>${row.Email}</td><td>${row.Phone}</td><td>${row.Paid}</td><td>${row.Notified}</td><td onclick="setUpEditRow('${id}')" class="pointer">Edit</td><td onclick="deleteRow(${id})" class="pointer">Delete</td></tr>`
         }
     });
     var body = document.getElementById('csvdocs');
