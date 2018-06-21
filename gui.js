@@ -55,7 +55,6 @@ function addRow() {
         Notified: $('#notified').val(),
     }
 
-    console.log('addRow');
     if (!entry.Name) {
         alert('Name Required!');
         return;
@@ -64,12 +63,12 @@ function addRow() {
         alert('Item Required!');
         return;
     }
-    if (!entry.Email) {
-        alert('Email Required!');
+    if (!entry.Email || !validateEmail(entry.Email)) {
+        alert('Email required and in proper format xxxx@xxx.xxxx');
         return;
     }
-    if (!entry.Phone) {
-        alert('Phone Required!');
+    if (!entry.Phone || !validatePhone(entry.Phone)) {
+        alert('Phone required and in proper format XXX-XXX-XXXX!');
         return;
     }
     if (!entry.Paid) {
@@ -133,12 +132,12 @@ function applyEdit() {
         alert('Item Required!');
         return;
     }
-    if (!entry.Email) {
-        alert('Email Required!');
+    if (!entry.Email || !validateEmail(entry.Email)) {
+        alert('Email required and in proper format xxxx@xxx.xxxx');
         return;
     }
-    if (!entry.Phone) {
-        alert('Phone Required!');
+    if (!entry.Phone || !validatePhone(entry.Phone)) {
+        alert('Phone required and in proper format XXX-XXX-XXXX!');
         return;
     }
     if (!entry.Paid) {
@@ -154,6 +153,16 @@ function applyEdit() {
     saveDB();
     $('#editModal').modal('hide');
 
+}
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+function validatePhone(email) {
+    var re = /\d{3}\-\d{3}\-\d{4}/;
+    return re.test(String(email).toLowerCase());
 }
 
 ipcRenderer.send('open');
